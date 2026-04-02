@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Course Player | Neural Architect AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "secondary": "#b7c8e1",
+            "on-primary-fixed": "#001f24",
+            "on-tertiary": "#002e6a",
+            "secondary-fixed-dim": "#b7c8e1",
+            "tertiary": "#e7ecff",
+            "on-primary": "#00363d",
+            "surface-variant": "#2d3449",
+            "on-background": "#dae2fd",
+            "surface-container-high": "#222a3d",
+            "surface": "#0b1326",
+            "error-container": "#93000a",
+            "inverse-on-surface": "#283044",
+            "on-secondary-fixed": "#0b1c30",
+            "on-primary-container": "#00626e",
+            "inverse-primary": "#006875",
+            "on-tertiary-container": "#0055b8",
+            "surface-container-lowest": "#060e20",
+            "on-surface-variant": "#bac9cc",
+            "outline-variant": "#3b494c",
+            "primary-container": "#00e5ff",
+            "on-secondary-fixed-variant": "#38485d",
+            "surface-tint": "#00daf3",
+            "on-secondary-container": "#a9bad3",
+            "surface-container": "#171f33",
+            "secondary-fixed": "#d3e4fe",
+            "on-tertiary-fixed-variant": "#004395",
+            "surface-dim": "#0b1326",
+            "primary": "#c3f5ff",
+            "inverse-surface": "#dae2fd",
+            "primary-fixed-dim": "#00daf3",
+            "on-secondary": "#213145",
+            "on-error-container": "#ffdad6",
+            "on-surface": "#dae2fd",
+            "on-error": "#690005",
+            "tertiary-fixed": "#d8e2ff",
+            "surface-bright": "#31394d",
+            "tertiary-container": "#bdd0ff",
+            "background": "#0b1326",
+            "secondary-container": "#3a4a5f",
+            "surface-container-highest": "#2d3449",
+            "surface-container-low": "#131b2e",
+            "error": "#ffb4ab",
+            "on-primary-fixed-variant": "#004f58",
+            "outline": "#849396",
+            "primary-fixed": "#9cf0ff",
+            "tertiary-fixed-dim": "#adc6ff",
+            "on-tertiary-fixed": "#001a42"
+          },
+          fontFamily: {
+            "headline": ["Inter"],
+            "body": ["Inter"],
+            "label": ["Inter"]
+          },
+          borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #0b1326;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #3b494c;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-fixed">
+<!-- TopNavBar Implementation from JSON -->
+<nav class="fixed top-0 w-full z-50 bg-[#0b1326]/40 backdrop-blur-3xl shadow-2xl flex items-center justify-between px-6 py-3 w-full">
+<div class="text-xl font-black tracking-tighter text-[#c3f5ff]">Neural Architect AI</div>
+<div class="hidden md:flex items-center space-x-8 font-['Inter'] font-medium tracking-tight">
+<a class="text-[#bac9cc] hover:text-[#c3f5ff] transition-colors duration-300" href="#">Home</a>
+<a class="text-[#00e5ff] border-b-2 border-[#00e5ff] pb-1" href="#">Modules</a>
+<a class="text-[#bac9cc] hover:text-[#c3f5ff] transition-colors duration-300" href="#">Ranking</a>
+<a class="text-[#bac9cc] hover:text-[#c3f5ff] transition-colors duration-300" href="#">Community</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="p-2 text-[#bac9cc] hover:bg-[#222a3d]/50 transition-colors duration-300 rounded-full">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-surface-container-high overflow-hidden border border-outline-variant/30">
+<img alt="User profile avatar" data-alt="Close up of a professional software engineer's profile avatar with a tech-focused aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVgE2qy_VCkLG_v2wOIwHTBPPD8bvw5xlcYcsEboj829_0ew4jyjLYtfvU1tUBeiX9ZUZd0WMxAtixCSw-MB0ZeNowbWMg2lSyF4v24tR2WAfasS6vo2gYT4iKc07ji23yne-uUG3_AJ0JQD6JM0aaT8aqNotLLsZbXvnxTXAd5iDVlFQnnw_6k24ogteRb0v9j_GbzdH4Jwka2aiSLF56wwXWVBp9z-ualczljylAjsv1qs4m0OiOYMnlHBTyGRCdqnwtJtCH_lI"/>
+</div>
+</div>
+</nav>
+<div class="flex h-screen pt-14">
+<!-- SideNavBar (Course Curriculum) Implementation -->
+<aside class="h-full w-80 bg-[#131b2e] flex flex-col border-r border-[#3b494c]/15 overflow-hidden">
+<!-- Curriculum Header -->
+<div class="p-6 border-b border-outline-variant/15">
+<div class="flex items-center justify-between mb-4">
+<span class="font-['Inter'] text-sm uppercase tracking-widest text-[#00e5ff]">Curriculum</span>
+<span class="text-xs text-on-surface-variant">45% Complete</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-gradient-to-r from-primary to-primary-container h-full w-[45%] shadow-[0_0_8px_rgba(0,229,255,0.4)]"></div>
+</div>
+</div>
+<!-- Module/Lesson List -->
+<div class="flex-1 overflow-y-auto custom-scrollbar">
+<!-- Module 1 -->
+<div class="group">
+<div class="px-6 py-4 flex items-center justify-between bg-surface-container-low cursor-pointer">
+<span class="text-xs font-bold text-on-surface-variant uppercase tracking-tighter">Module 1: Foundations</span>
+<span class="material-symbols-outlined text-sm text-on-surface-variant">expand_more</span>
+</div>
+</div>
+<!-- Module 2 (Active) -->
+<div class="bg-surface-container-low">
+<div class="px-6 py-4 flex items-center justify-between border-b border-outline-variant/10">
+<span class="text-xs font-bold text-primary uppercase tracking-tighter">Module 2: Advanced Neural Architectures</span>
+<span class="material-symbols-outlined text-sm text-primary">expand_less</span>
+</div>
+<div class="flex flex-col">
+<!-- Lesson Item -->
+<div class="px-6 py-4 flex items-center gap-3 bg-surface-container-high border-l-4 border-primary-container cursor-pointer transition-all">
+<span class="material-symbols-outlined text-primary-container text-sm" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+<div class="flex flex-col">
+<span class="text-sm font-medium text-on-surface">Attention Mechanisms</span>
+<span class="text-[10px] text-on-surface-variant uppercase tracking-widest">12:45 MIN</span>
+</div>
+</div>
+<div class="px-6 py-4 flex items-center gap-3 hover:bg-[#222a3d] cursor-pointer transition-all active:translate-x-1">
+<span class="material-symbols-outlined text-on-surface-variant text-sm">play_circle</span>
+<div class="flex flex-col">
+<span class="text-sm font-medium text-on-surface-variant">Multi-Head Latent Spaces</span>
+<span class="text-[10px] text-on-surface-variant uppercase tracking-widest">18:20 MIN</span>
+</div>
+</div>
+<div class="px-6 py-4 flex items-center gap-3 hover:bg-[#222a3d] cursor-pointer transition-all active:translate-x-1">
+<span class="material-symbols-outlined text-on-surface-variant text-sm">lock</span>
+<div class="flex flex-col opacity-50">
+<span class="text-sm font-medium text-on-surface-variant">Transformer Blocks Deep-Dive</span>
+<span class="text-[10px] text-on-surface-variant uppercase tracking-widest">24:00 MIN</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Module 3 -->
+<div class="px-6 py-4 flex items-center justify-between bg-surface-container-low cursor-pointer border-t border-outline-variant/10">
+<span class="text-xs font-bold text-on-surface-variant uppercase tracking-tighter">Module 3: Large Language Models</span>
+<span class="material-symbols-outlined text-sm text-on-surface-variant">lock</span>
+</div>
+</div>
+<!-- Sidebar Footer -->
+<div class="p-4 border-t border-outline-variant/15 bg-surface-container-lowest">
+<button class="w-full py-3 bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold text-xs uppercase tracking-widest rounded shadow-[0_0_12px_rgba(0,218,243,0.3)] hover:opacity-90 transition-opacity">
+          Resume Training
+        </button>
+</div>
+</aside>
+<!-- Main Player Canvas -->
+<main class="flex-1 overflow-y-auto custom-scrollbar bg-surface flex flex-col">
+<!-- Video Player Section -->
+<section class="w-full aspect-video bg-surface-container-lowest relative group overflow-hidden">
+<img alt="Video Player Placeholder" class="w-full h-full object-cover opacity-60" data-alt="A cinematic still of a neural network visualization with flowing blue light particles and digital code overlays in a dark void" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0Tc4hU74Sw-6Xork4EIZmXTmFTHvk4mqv4GDoG-RvGnw3LFwSHH67MFHD1ZGIjvoDFwHq-_TLk7HuiaJIlTlqQfglR26-gxyLOYFe5L2dk2-DtsKRIN0AAKCaCp-cCaWlU6U6mhAUQm9EOHrGlp3f6Z7Yi8dqakAGHHowgPFmqO0CvPGpKAfaOYf8nLRSJUv_XZrPb2SZxUU7Z0n-fu5U7pNoRIhwGffa1qkuthLiIKl2BtlHcme_MN2Vd8kVTn69g0HHL81TRRo"/>
+<!-- UI Overlays -->
+<div class="absolute inset-0 flex items-center justify-center">
+<button class="w-20 h-20 rounded-full bg-primary/20 backdrop-blur-md flex items-center justify-center border border-primary/30 group-hover:scale-110 transition-transform shadow-[0_0_30px_rgba(0,229,255,0.2)]">
+<span class="material-symbols-outlined text-primary text-5xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+<!-- Custom Controls Bar -->
+<div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
+<div class="w-full h-1 bg-surface-container-highest rounded-full mb-4 cursor-pointer">
+<div class="h-full w-[35%] bg-primary shadow-[0_0_10px_#00daf3]"></div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-110 transition-transform">play_arrow</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">skip_next</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">volume_up</span>
+<span class="text-xs font-mono text-on-surface-variant">04:22 / 12:45</span>
+</div>
+<div class="flex items-center gap-6">
+<span class="text-xs font-mono text-on-surface-variant bg-surface-container-high px-2 py-1 rounded">1.25x</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">settings</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">fullscreen</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Content Area -->
+<section class="px-10 py-12 max-w-6xl mx-auto w-full">
+<div class="flex flex-col md:flex-row justify-between items-start gap-8">
+<div class="flex-1">
+<nav class="flex items-center gap-2 text-[10px] text-on-surface-variant uppercase tracking-[0.2em] mb-4">
+<span>Modules</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-primary-fixed-dim">Advanced Neural Architectures</span>
+</nav>
+<h1 class="text-4xl font-headline font-extrabold text-primary tracking-tight mb-6">Attention Mechanisms &amp; Transformer Blocks</h1>
+<p class="text-on-surface-variant body-lg leading-relaxed mb-10 max-w-3xl">
+              In this session, we deep dive into the mathematical foundations of Self-Attention and how it revolutionized sequence modeling. We will explore the computation of Query, Key, and Value matrices and how they enable global context awareness within neural networks.
+            </p>
+</div>
+<div class="shrink-0 flex flex-col gap-4">
+<button class="flex items-center justify-center gap-3 px-8 py-4 bg-surface-container-high hover:bg-surface-container-highest border border-outline-variant/20 rounded-xl transition-all group">
+<span class="material-symbols-outlined text-primary-container transition-transform group-hover:scale-110">check_circle</span>
+<span class="text-sm font-bold uppercase tracking-widest text-on-surface">Mark as Completed</span>
+</button>
+<div class="p-4 bg-surface-container-low rounded-xl border border-outline-variant/10 text-center">
+<span class="block text-[10px] text-on-surface-variant uppercase tracking-widest mb-1">Lesson Complexity</span>
+<span class="text-sm font-bold text-error">Expert Level</span>
+</div>
+</div>
+</div>
+<!-- Tabs / Resources Grid -->
+<div class="mt-12 border-t border-outline-variant/15 pt-12">
+<h2 class="text-xs font-bold text-on-surface uppercase tracking-widest mb-8 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-lg">folder_open</span>
+            Course Resources
+          </h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Resource Card 1 -->
+<div class="p-6 bg-surface-container-low rounded-xl hover:bg-surface-container-high transition-all cursor-pointer group">
+<div class="flex items-start justify-between mb-4">
+<div class="w-12 h-12 bg-surface-container-highest rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">picture_as_pdf</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">download</span>
+</div>
+<h3 class="text-sm font-bold text-on-surface mb-1">Architecture Slides.pdf</h3>
+<p class="text-xs text-on-surface-variant">Visual diagrams of Attention heads and data flow.</p>
+</div>
+<!-- Resource Card 2 -->
+<div class="p-6 bg-surface-container-low rounded-xl hover:bg-surface-container-high transition-all cursor-pointer group border border-primary/5">
+<div class="flex items-start justify-between mb-4">
+<div class="w-12 h-12 bg-surface-container-highest rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">terminal</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">open_in_new</span>
+</div>
+<h3 class="text-sm font-bold text-on-surface mb-1">Self_Attention_Lab.ipynb</h3>
+<p class="text-xs text-on-surface-variant">Interactive Jupyter Notebook for PyTorch implementation.</p>
+</div>
+<!-- Resource Card 3 -->
+<div class="p-6 bg-surface-container-low rounded-xl hover:bg-surface-container-high transition-all cursor-pointer group">
+<div class="flex items-start justify-between mb-4">
+<div class="w-12 h-12 bg-surface-container-highest rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">code</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">link</span>
+</div>
+<h3 class="text-sm font-bold text-on-surface mb-1">GitHub Repository</h3>
+<p class="text-xs text-on-surface-variant">Complete source code for the Architect transformer model.</p>
+</div>
+</div>
+</div>
+<!-- Instructor Section -->
+<div class="mt-20 p-10 bg-surface-container-low rounded-3xl relative overflow-hidden border border-outline-variant/10">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -mr-32 -mt-32"></div>
+<div class="relative z-10 flex flex-col md:flex-row items-center gap-8">
+<div class="w-24 h-24 rounded-2xl overflow-hidden shadow-2xl rotate-3">
+<img alt="Lead Architect Avatar" class="w-full h-full object-cover" data-alt="A portrait of a futuristic AI mentor, digital personification with glowing cyan elements in a tech background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKgW-KbCdI7M0tq7oZ_pT44Xv5L8_QxqH9snknj66-yWvfgzYuV7anRS6YljmlBy72DatR2TccwnXcxTjfrzQGMx9uU-yBahfmi_0mmc8uh-zKmifepVXISIAk71OAX6IQwYUq447Xtn3K-Unm1XfG2rjtMnixxdp6Zqn6MPsPKe8sIpOkNZB5EMcd6995mD8BYbID9M1Md4mtuf2MyQ1dKcr9iDYmsGwlRJbpV5hsezmfYW3-29oCfkMMLZfbNJSzxVZ684aPgc8"/>
+</div>
+<div class="text-center md:text-left">
+<span class="text-[10px] text-primary uppercase tracking-[0.3em] font-bold block mb-2">Primary Instructor</span>
+<h3 class="text-2xl font-headline font-bold text-on-surface mb-2">Dr. Elias Vance</h3>
+<p class="text-on-surface-variant text-sm max-w-xl">
+                Former DeepMind Lead Research Engineer and Founding Architect at Neural Synthesis Labs. Expert in multi-agent reinforcement learning.
+              </p>
+</div>
+</div>
+</div>
+</section>
+<footer class="mt-auto px-10 py-8 border-t border-outline-variant/10 bg-surface-container-lowest">
+<div class="flex items-center justify-between text-[10px] text-on-surface-variant uppercase tracking-widest">
+<span>© 2024 Neural Architect AI</span>
+<div class="flex gap-6">
+<a class="hover:text-primary" href="#">Documentation</a>
+<a class="hover:text-primary" href="#">Support</a>
+<a class="hover:text-primary" href="#">Ethical Guidelines</a>
+</div>
+</div>
+</footer>
+</main>
+</div>
+</body></html>

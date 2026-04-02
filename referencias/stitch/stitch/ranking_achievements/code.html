@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Neural Architect AI - Ranking</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary": "#b7c8e1",
+                        "on-primary-fixed": "#001f24",
+                        "on-tertiary": "#002e6a",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "tertiary": "#e7ecff",
+                        "on-primary": "#00363d",
+                        "surface-variant": "#2d3449",
+                        "on-background": "#dae2fd",
+                        "surface-container-high": "#222a3d",
+                        "surface": "#0b1326",
+                        "error-container": "#93000a",
+                        "inverse-on-surface": "#283044",
+                        "on-secondary-fixed": "#0b1c30",
+                        "on-primary-container": "#00626e",
+                        "inverse-primary": "#006875",
+                        "on-tertiary-container": "#0055b8",
+                        "surface-container-lowest": "#060e20",
+                        "on-surface-variant": "#bac9cc",
+                        "outline-variant": "#3b494c",
+                        "primary-container": "#00e5ff",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "surface-tint": "#00daf3",
+                        "on-secondary-container": "#a9bad3",
+                        "surface-container": "#171f33",
+                        "secondary-fixed": "#d3e4fe",
+                        "on-tertiary-fixed-variant": "#004395",
+                        "surface-dim": "#0b1326",
+                        "primary": "#c3f5ff",
+                        "inverse-surface": "#dae2fd",
+                        "primary-fixed-dim": "#00daf3",
+                        "on-secondary": "#213145",
+                        "on-error-container": "#ffdad6",
+                        "on-surface": "#dae2fd",
+                        "on-error": "#690005",
+                        "tertiary-fixed": "#d8e2ff",
+                        "surface-bright": "#31394d",
+                        "tertiary-container": "#bdd0ff",
+                        "background": "#0b1326",
+                        "secondary-container": "#3a4a5f",
+                        "surface-container-highest": "#2d3449",
+                        "surface-container-low": "#131b2e",
+                        "error": "#ffb4ab",
+                        "on-primary-fixed-variant": "#004f58",
+                        "outline": "#849396",
+                        "primary-fixed": "#9cf0ff",
+                        "tertiary-fixed-dim": "#adc6ff",
+                        "on-tertiary-fixed": "#001a42"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b1326;
+            color: #dae2fd;
+        }
+        .glass-effect {
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-[#0b1326]/40 backdrop-blur-3xl shadow-2xl flex items-center justify-between px-6 py-3 w-full">
+<div class="flex items-center gap-8">
+<span class="text-xl font-black tracking-tighter text-[#c3f5ff]">Neural Architect AI</span>
+<div class="hidden md:flex gap-6 font-['Inter'] font-medium tracking-tight">
+<a class="text-[#bac9cc] hover:text-[#c3f5ff] transition-colors duration-300" href="#">Home</a>
+<a class="text-[#bac9cc] hover:text-[#c3f5ff] transition-colors duration-300" href="#">Modules</a>
+<a class="text-[#00e5ff] border-b-2 border-[#00e5ff] pb-1" href="#">Ranking</a>
+<a class="text-[#bac9cc] hover:text-[#c3f5ff] transition-colors duration-300" href="#">Community</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-[#bac9cc] hover:text-[#c3f5ff] p-2 transition-colors duration-300">notifications</button>
+<div class="h-8 w-8 rounded-full bg-surface-container-high border border-outline-variant/15 overflow-hidden">
+<img alt="User profile avatar" data-alt="Close-up portrait of a professional male engineer with a focused expression, neutral studio background, high-end commercial photography style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJud5II-Oy8-GvxyFSc72hh-o_0xTBpVXjwlGFnWiZ62h6ZjelT02psSTf_zwAXmMjk7LcqG0qME1255z-oVqfuYeDUsB72IVAMHLU8pE52vTzKy1JCcISWDMz9tx1hM5mm2x_ISrF08iRSCBufZZakGWpVhmzisu5A-jKGzf2BZwR75lzl0rz_dNUTvE5m3ZlQBA7SZf-5wjHG9JreWUul6ePUc1KlM2WvsiixBxWMCPVdgOQR1iFKtCf6qmzfn2G6qDqRXx6f70"/>
+</div>
+</div>
+</nav>
+<div class="flex pt-[60px]">
+<!-- Side Navigation (Web) -->
+<aside class="hidden md:flex flex-col h-[calc(100vh-60px)] w-64 bg-[#131b2e] py-8 border-r border-[#3b494c]/15 sticky top-[60px]">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-primary-container p-[1px]">
+<div class="w-full h-full rounded-xl bg-surface-container-low flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">architecture</span>
+</div>
+</div>
+<div>
+<p class="text-on-surface font-bold text-sm">Lead Architect</p>
+<p class="text-on-surface-variant text-[10px] uppercase tracking-widest">Level 42 · AI Specialist</p>
+</div>
+</div>
+<button class="w-full py-2 bg-gradient-to-r from-[#c3f5ff] to-[#00e5ff] text-[#00363d] font-bold text-xs rounded-xl hover:opacity-90 active:scale-95 transition-all">Resume Training</button>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-6 py-3 font-['Inter'] text-sm uppercase tracking-widest text-[#bac9cc] hover:bg-[#222a3d] transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                    Dashboard
+                </a>
+<a class="flex items-center gap-3 px-6 py-3 font-['Inter'] text-sm uppercase tracking-widest text-[#bac9cc] hover:bg-[#222a3d] transition-all" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+                    Curriculum
+                </a>
+<a class="flex items-center gap-3 px-6 py-3 font-['Inter'] text-sm uppercase tracking-widest bg-gradient-to-r from-[#00e5ff]/10 to-transparent text-[#00e5ff] border-l-4 border-[#00e5ff] cursor-pointer" href="#">
+<span class="material-symbols-outlined">military_tech</span>
+                    Achievements
+                </a>
+<a class="flex items-center gap-3 px-6 py-3 font-['Inter'] text-sm uppercase tracking-widest text-[#bac9cc] hover:bg-[#222a3d] transition-all" href="#">
+<span class="material-symbols-outlined">payments</span>
+                    Billing
+                </a>
+<a class="flex items-center gap-3 px-6 py-3 font-['Inter'] text-sm uppercase tracking-widest text-[#bac9cc] hover:bg-[#222a3d] transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+                    Settings
+                </a>
+</nav>
+<div class="px-6 mt-auto space-y-1 pt-4 border-t border-outline-variant/10">
+<a class="flex items-center gap-3 py-2 font-['Inter'] text-[10px] uppercase tracking-widest text-[#bac9cc] hover:text-[#c3f5ff] transition-all" href="#">
+<span class="material-symbols-outlined text-sm">description</span> Documentation
+                </a>
+<a class="flex items-center gap-3 py-2 font-['Inter'] text-[10px] uppercase tracking-widest text-[#bac9cc] hover:text-[#c3f5ff] transition-all" href="#">
+<span class="material-symbols-outlined text-sm">help</span> Support
+                </a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 p-6 md:p-10 space-y-10 overflow-x-hidden">
+<!-- Bento Grid Header: Profile & Stats -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Profile Card (Span 8) -->
+<div class="lg:col-span-8 bg-surface-container-low rounded-xl p-8 relative overflow-hidden group">
+<!-- Decor Background -->
+<div class="absolute -right-20 -top-20 w-64 h-64 bg-primary/5 rounded-full blur-[80px]"></div>
+<div class="absolute -left-10 -bottom-10 w-48 h-48 bg-primary-container/5 rounded-full blur-[60px]"></div>
+<div class="relative flex flex-col md:flex-row items-center gap-8">
+<div class="relative">
+<div class="w-32 h-32 rounded-2xl overflow-hidden ring-4 ring-primary-container/20">
+<img alt="Engineer Profile" class="w-full h-full object-cover" data-alt="Portrait of a focused male engineer, cinematic lighting with subtle blue highlights, depth of field background with tech equipment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFp2a0IFHbO_0muD5SepyD3vXJaMT1dVsYZ5e-l24aIEopXQe4lgGbJOC0gvfXS6MVlYgNqOR7CNt3ZUNnPQE1bv5p5OshQMojcRS-E0AgyGxsGbh-y5rA3b4aZpdBDJTZ6IyDeklX2wnkXfOsFrzT0bZjPjLhDE4Ofw4U6QqUzwLMqJI9FzkhEx7Ye-6d1-CaQOXu6JVKKVF3s4j8_1jlePXjDUizc6mwgOOv74cmhddP8wikEPRPtIgjkgerW60kQ4wI73IjgVk"/>
+</div>
+<div class="absolute -bottom-3 -right-3 bg-primary-container text-on-primary-container font-black text-xs px-3 py-1 rounded-full shadow-lg">RANK #12</div>
+</div>
+<div class="flex-1 text-center md:text-left">
+<h1 class="text-3xl font-black text-primary tracking-tight mb-1">Alex Thorne</h1>
+<p class="text-on-surface-variant text-sm uppercase tracking-[0.2em] mb-4">Neural Architecture Level 42</p>
+<div class="flex flex-wrap justify-center md:justify-start gap-2">
+<span class="bg-secondary-container text-on-secondary-container text-[10px] font-bold px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">verified</span> PyTorch Pro
+                                </span>
+<span class="bg-secondary-container text-on-secondary-container text-[10px] font-bold px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">function</span> Math Wizard
+                                </span>
+<span class="bg-secondary-container text-on-secondary-container text-[10px] font-bold px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">bolt</span> Rapid Learner
+                                </span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 w-full md:w-auto">
+<div class="bg-surface-container-highest p-4 rounded-xl border border-outline-variant/10 text-center">
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest mb-1">Total Points</p>
+<p class="text-2xl font-black text-primary">24,580</p>
+</div>
+<div class="bg-surface-container-highest p-4 rounded-xl border border-outline-variant/10 text-center">
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest mb-1">Weekly Growth</p>
+<p class="text-2xl font-black text-primary-container">+12%</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Points Breakdown (Span 4) -->
+<div class="lg:col-span-4 bg-surface-container-lowest rounded-xl p-6 border border-outline-variant/10 flex flex-col justify-between">
+<div>
+<h2 class="text-primary font-bold text-sm uppercase tracking-widest mb-6">Efficiency Multipliers</h2>
+<ul class="space-y-4">
+<li class="flex items-center justify-between group">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container-high flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-sm">play_circle</span>
+</div>
+<span class="text-sm font-medium">Watch Lessons</span>
+</div>
+<span class="text-xs text-primary font-bold">+50 XP / hr</span>
+</li>
+<li class="flex items-center justify-between group">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container-high flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-sm">quiz</span>
+</div>
+<span class="text-sm font-medium">Pass Quizzes</span>
+</div>
+<span class="text-xs text-primary font-bold">+200 XP / module</span>
+</li>
+<li class="flex items-center justify-between group">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container-high flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-sm">terminal</span>
+</div>
+<span class="text-sm font-medium">Coding Labs</span>
+</div>
+<span class="text-xs text-primary font-bold">+500 XP / lab</span>
+</li>
+</ul>
+</div>
+<div class="mt-6 p-3 bg-primary-container/10 rounded-lg border border-primary-container/20">
+<p class="text-[10px] text-primary-container font-bold italic text-center">TIP: Complete Daily Labs to maintain a 1.5x streak bonus!</p>
+</div>
+</div>
+</section>
+<!-- Global Leaderboard -->
+<section class="space-y-6">
+<div class="flex items-center justify-between">
+<h2 class="text-2xl font-black text-on-surface tracking-tight">Global Leaderboard</h2>
+<div class="flex bg-surface-container-low rounded-full p-1">
+<button class="px-4 py-1.5 rounded-full text-[10px] font-bold uppercase bg-surface-container-highest text-primary">Global</button>
+<button class="px-4 py-1.5 rounded-full text-[10px] font-bold uppercase text-on-surface-variant hover:text-on-surface transition-colors">Regional</button>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-2xl overflow-hidden border border-outline-variant/5">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-high/50">
+<tr>
+<th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Rank</th>
+<th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Architect</th>
+<th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Active Badges</th>
+<th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant text-right">Points</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<!-- Rank 1 -->
+<tr class="bg-surface-bright/20 hover:bg-surface-container-high transition-colors">
+<td class="px-6 py-5">
+<span class="w-8 h-8 rounded-full bg-gradient-to-br from-yellow-400 to-amber-600 flex items-center justify-center text-on-primary-fixed font-black text-xs">1</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden">
+<img alt="Architect" data-alt="Portrait of a young male software engineer, technical aesthetic, soft glowing studio lights, minimalist dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAauqpBwJluJ6JfeUUXcjxB0GdEsHg4Adg3zE1PvaY72z_Kbn08TpX9XaqhrhjOeMS8nbbU530mKfsEqgGj97hL-XGyWop8cLvmaUfMLjbGmIuZsG4YpZ0J65wZ3O2iynNLSaoulcQRgg3840n8vosIE8zxafTAQs_ENb8cCyFUn6kC-Mi5xA17vf6qKrFxJn9ULx_eaMPlR7Ni6kkYZtTUXlNF5aUuEdooei3Q3wFcGWgi6KyscLMePleMVU2h29r4omzzxQTDbLY"/>
+</div>
+<span class="font-bold text-primary">Julian Chen</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex gap-1.5">
+<span class="material-symbols-outlined text-primary-container text-sm" style="font-variation-settings: 'FILL' 1;" title="Top Tier Master">military_tech</span>
+<span class="material-symbols-outlined text-tertiary-fixed-dim text-sm" style="font-variation-settings: 'FILL' 1;" title="Algorithm Sage">schema</span>
+<span class="material-symbols-outlined text-error text-sm" style="font-variation-settings: 'FILL' 1;" title="Elite Coder">terminal</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right font-black text-primary tracking-tighter">48,200</td>
+</tr>
+<!-- Rank 2 -->
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="px-6 py-5">
+<span class="w-8 h-8 rounded-full bg-slate-400 flex items-center justify-center text-on-primary-fixed font-black text-xs">2</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden">
+<img alt="Architect" data-alt="Portrait of a successful female tech professional, clean modern look, soft diffused light, corporate headshot style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxoWQ7JfS6RGr7a6wAbinL_k2OurGSZMHvOTOogC0pY3Rn4WOhTAtBdLIlZ1E7Sso-UqeTWtVoM20OLWWCAW0YGLZ-Ibm2y7pXXDNjWtMSaK5Hy1uF_4XKogaPHQJnhzy51Z3t6tPO-eBM7KKa9ZEDNLYL01hjUkAh2wUVRSR18YDVTINAtcxd3tVcvHqKCArZac7KTgJEn8WqV2367j-kBLxzgIFn93BJWlgENsLv7RpntPl1EpHIt1-5SOJZYYeGWTtFE29VpLU"/>
+</div>
+<span class="font-bold">Sara Vance</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex gap-1.5">
+<span class="material-symbols-outlined text-on-surface-variant text-sm" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+<span class="material-symbols-outlined text-on-surface-variant text-sm" style="font-variation-settings: 'FILL' 1;">analytics</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right font-bold text-on-surface">42,150</td>
+</tr>
+<!-- Rank 3 -->
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="px-6 py-5">
+<span class="w-8 h-8 rounded-full bg-amber-700 flex items-center justify-center text-on-primary-fixed font-black text-xs">3</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden">
+<img alt="Architect" data-alt="Professional avatar of a male technologist, warm lighting, blurred office background, high resolution profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC82oZoncFa0sfgrUZUUbSJjvz9HqTxey8HYM9n8LJk45eWYSRcgWy2CvkWobXEiNiFUB5VWfQpzaO193NVEXHnEvVS7EuhAxmgbU-T_CR6-BVKnn1woABO9n-lpsAF2ilXnKco_bZ_pMYD4bKRie400eX6sqsFh87GIbYRp6__UQdOhtCY_5nwSDv-6xrhGSWEFoLIGw0gkerL-DWmtmWlP3EV9c8vEU9i6kVvgY-Ddmr3VooD_VSiA9U-yVSyiagFKlG7-_hdLFY"/>
+</div>
+<span class="font-bold">Marcus Roe</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex gap-1.5">
+<span class="material-symbols-outlined text-on-surface-variant text-sm" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+<span class="material-symbols-outlined text-on-surface-variant text-sm" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right font-bold text-on-surface">39,400</td>
+</tr>
+<!-- My Rank (Sticky/Contextual) -->
+<tr class="bg-primary/5 border-l-4 border-primary">
+<td class="px-6 py-5">
+<span class="w-8 h-8 rounded-full bg-surface-container-highest border border-primary-container flex items-center justify-center text-primary-container font-black text-xs">12</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden ring-1 ring-primary/30">
+<img alt="Alex Thorne" data-alt="Headshot of a male engineer in dark studio setting, blue accent lighting, technical vibe" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB78E0Xwry45aq0CeOP734R1xwng9gB_XxbXrXd6ldW8VrZigVHeQfiyI2K5RhjS3vH0EH59jslCTQcnSjAG1IZNp1cqfIuE5WYVMAKxB3Y8J7NUHY3iSbiJmug2FpHpxLykBYttr84SPakZA56M48LIQfXP7woKWEX8PNopp4gn8udIbrRczB85iS8vrA13QX4JxC39PU5sTBfmXgHfFdZKiR6fy2fGO6WjR1zsylLIWQ3cd2vW17XEQsCGyT418lhrWzWo0ltot0"/>
+</div>
+<span class="font-black text-primary">Alex Thorne (You)</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex gap-1.5">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">function</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right font-black text-primary">24,580</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Achievements Grid -->
+<section class="space-y-6">
+<div class="flex items-center justify-between">
+<h2 class="text-2xl font-black text-on-surface tracking-tight">Technical Mastery</h2>
+<p class="text-on-surface-variant text-xs uppercase tracking-widest">14 / 28 Unlocked</p>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+<!-- Unlocked Badge -->
+<div class="bg-surface-container-high p-6 rounded-2xl flex flex-col items-center text-center group cursor-pointer hover:shadow-[0_0_20px_rgba(0,229,255,0.15)] transition-all">
+<div class="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-primary-container p-[1px] mb-4">
+<div class="w-full h-full rounded-full bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl text-primary" style="font-variation-settings: 'FILL' 1;">memory</span>
+</div>
+</div>
+<p class="text-xs font-bold text-on-surface mb-1">Compute King</p>
+<p class="text-[9px] text-on-surface-variant uppercase">Unlocked</p>
+</div>
+<!-- Unlocked Badge -->
+<div class="bg-surface-container-high p-6 rounded-2xl flex flex-col items-center text-center group cursor-pointer hover:shadow-[0_0_20px_rgba(0,229,255,0.15)] transition-all">
+<div class="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-primary-container p-[1px] mb-4">
+<div class="w-full h-full rounded-full bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl text-primary" style="font-variation-settings: 'FILL' 1;">model_training</span>
+</div>
+</div>
+<p class="text-xs font-bold text-on-surface mb-1">PyTorch Pro</p>
+<p class="text-[9px] text-on-surface-variant uppercase">Unlocked</p>
+</div>
+<!-- Locked Badge -->
+<div class="bg-surface-container-low/50 p-6 rounded-2xl flex flex-col items-center text-center opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all cursor-help border border-outline-variant/10">
+<div class="w-16 h-16 rounded-full bg-surface-container-highest flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-3xl text-on-surface-variant">psychology</span>
+</div>
+<p class="text-xs font-bold text-on-surface-variant mb-1">Mind Meld</p>
+<p class="text-[9px] text-on-surface-variant uppercase">Locked</p>
+</div>
+<!-- Locked Badge -->
+<div class="bg-surface-container-low/50 p-6 rounded-2xl flex flex-col items-center text-center opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all cursor-help border border-outline-variant/10">
+<div class="w-16 h-16 rounded-full bg-surface-container-highest flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-3xl text-on-surface-variant">query_stats</span>
+</div>
+<p class="text-xs font-bold text-on-surface-variant mb-1">Data Sensei</p>
+<p class="text-[9px] text-on-surface-variant uppercase">Locked</p>
+</div>
+<!-- Unlocked Badge -->
+<div class="bg-surface-container-high p-6 rounded-2xl flex flex-col items-center text-center group cursor-pointer hover:shadow-[0_0_20px_rgba(0,229,255,0.15)] transition-all">
+<div class="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-primary-container p-[1px] mb-4">
+<div class="w-full h-full rounded-full bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl text-primary" style="font-variation-settings: 'FILL' 1;">hub</span>
+</div>
+</div>
+<p class="text-xs font-bold text-on-surface mb-1">Network Hub</p>
+<p class="text-[9px] text-on-surface-variant uppercase">Unlocked</p>
+</div>
+<!-- Locked Badge -->
+<div class="bg-surface-container-low/50 p-6 rounded-2xl flex flex-col items-center text-center opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all cursor-help border border-outline-variant/10">
+<div class="w-16 h-16 rounded-full bg-surface-container-highest flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-3xl text-on-surface-variant">auto_awesome</span>
+</div>
+<p class="text-xs font-bold text-on-surface-variant mb-1">GenAI Master</p>
+<p class="text-[9px] text-on-surface-variant uppercase">Locked</p>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- Bottom Nav Bar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-[#131b2e] flex items-center justify-around py-3 border-t border-[#3b494c]/15 z-50">
+<button class="flex flex-col items-center gap-1 text-[#bac9cc]">
+<span class="material-symbols-outlined text-2xl">dashboard</span>
+<span class="text-[10px] uppercase font-medium">Dash</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-[#bac9cc]">
+<span class="material-symbols-outlined text-2xl">menu_book</span>
+<span class="text-[10px] uppercase font-medium">Learn</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-[#00e5ff]">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+<span class="text-[10px] uppercase font-black">Rank</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-[#bac9cc]">
+<span class="material-symbols-outlined text-2xl">settings</span>
+<span class="text-[10px] uppercase font-medium">Set</span>
+</button>
+</nav>
+</body></html>

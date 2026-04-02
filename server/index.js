@@ -239,11 +239,75 @@ app.get('/api/admin/users', requireAdmin, (req, res) => {
 // ── WEBHOOKS ────────────────────────────────────────────
 app.post('/webhook/hotmart', (req, res) => {
   const token = req.query.token || req.headers['x-hotmart-token'];
-  if (token !== process.env.HOTMART_WEBHOOK_TOKEN && process.env.NODE_ENV === 'production') {
+
+  // Validação do token (apenas em prod)
+  if (process.env.NODE_ENV === 'production' && token !== process.env.HOTMART_WEBHOOK_TOKEN) {
+    console.warn('[Hotmart] Webhook com token inválido');
     return res.status(401).send('Unauthorized');
   }
-  console.log('[Hotmart] Webhook recebido');
-  res.json({ ok: true });
+
+  const { status, customer, product } = req.body;
+
+  console.log(`[Hotmart] Webhook: ${status} | Cliente: ${customer?.email} | Produto: ${product?.id}`);
+
+  // Processa aprovação de pagamento
+  if (status === 'approved' || status === 'billet_paid') {
+    const userEmail = customer?.email?.toLowerCase();
+    const userName = customer?.name || 'Aluno';
+
+    if (!userEmail) {
+      console.warn('[Hotmart] Email não encontrado no webhook');
+      return res.status(400).json({ error: 'Email obrigatório' });
+    }
+
+    // Registra pagamento
+    db.payments.push({
+      id: uuidv4(),
+      email: userEmail,
+      status: 'approved',
+      amount: product?.price || 790,
+      hotmart_id: product?.id,
+      created_at: new Date().toISOString()
+    });
+
+    // Cria usuário se não existir
+    if (!db.users.some(u => u.email === userEmail)) {
+      const hash = bcrypt.hashSync('TempPassword123!', 10);
+      db.users.push({
+        id: uuidv4(),
+        name: userName,
+        email: userEmail,
+        password: hash,
+        role: 'student',
+        status: 'active',
+        plan: 'completo',
+        progress: {},
+        created_at: new Date().toISOString(),
+        payment_src: 'hotmart',
+        paid_at: new Date().toISOString()
+      });
+      console.log(`✅ Novo usuário criado via Hotmart: ${userEmail}`);
+    } else {
+      // Ativa usuário existente
+      const user = db.users.find(u => u.email === userEmail);
+      user.status = 'active';
+      user.paid_at = new Date().toISOString();
+    }
+
+    res.json({ ok: true, message: 'Pagamento processado' });
+  } else if (status === 'refunded' || status === 'refund_request') {
+    // Processa reembolso
+    const userEmail = customer?.email?.toLowerCase();
+    const user = db.users.find(u => u.email === userEmail);
+    if (user) {
+      user.status = 'inactive';
+      console.log(`⚠️  Usuário desativado por reembolso: ${userEmail}`);
+    }
+    res.json({ ok: true, message: 'Reembolso processado' });
+  } else {
+    // Status desconhecido
+    res.json({ ok: true, message: `Status ${status} recebido (sem ação)` });
+  }
 });
 
 // ── HEALTH CHECK ────────────────────────────────────────

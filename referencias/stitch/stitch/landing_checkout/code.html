@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Neural Architect AI | Lead AI Engineering Course</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary": "#b7c8e1",
+                        "on-primary-fixed": "#001f24",
+                        "on-tertiary": "#002e6a",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "tertiary": "#e7ecff",
+                        "on-primary": "#00363d",
+                        "surface-variant": "#2d3449",
+                        "on-background": "#dae2fd",
+                        "surface-container-high": "#222a3d",
+                        "surface": "#0b1326",
+                        "error-container": "#93000a",
+                        "inverse-on-surface": "#283044",
+                        "on-secondary-fixed": "#0b1c30",
+                        "on-primary-container": "#00626e",
+                        "inverse-primary": "#006875",
+                        "on-tertiary-container": "#0055b8",
+                        "surface-container-lowest": "#060e20",
+                        "on-surface-variant": "#bac9cc",
+                        "outline-variant": "#3b494c",
+                        "primary-container": "#00e5ff",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "surface-tint": "#00daf3",
+                        "on-secondary-container": "#a9bad3",
+                        "surface-container": "#171f33",
+                        "secondary-fixed": "#d3e4fe",
+                        "on-tertiary-fixed-variant": "#004395",
+                        "surface-dim": "#0b1326",
+                        "primary": "#c3f5ff",
+                        "inverse-surface": "#dae2fd",
+                        "primary-fixed-dim": "#00daf3",
+                        "on-secondary": "#213145",
+                        "on-error-container": "#ffdad6",
+                        "on-surface": "#dae2fd",
+                        "on-error": "#690005",
+                        "tertiary-fixed": "#d8e2ff",
+                        "surface-bright": "#31394d",
+                        "tertiary-container": "#bdd0ff",
+                        "background": "#0b1326",
+                        "secondary-container": "#3a4a5f",
+                        "surface-container-highest": "#2d3449",
+                        "surface-container-low": "#131b2e",
+                        "error": "#ffb4ab",
+                        "on-primary-fixed-variant": "#004f58",
+                        "outline": "#849396",
+                        "primary-fixed": "#9cf0ff",
+                        "tertiary-fixed-dim": "#adc6ff",
+                        "on-tertiary-fixed": "#001a42"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { background-color: #0b1326; color: #dae2fd; font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-nav { background: rgba(11, 19, 38, 0.4); backdrop-filter: blur(24px); }
+        .hero-glow { background: radial-gradient(circle at 50% 50%, rgba(0, 229, 255, 0.15) 0%, transparent 70%); }
+    </style>
+</head>
+<body class="selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar (Shared Component) -->
+<nav class="fixed top-0 w-full z-50 bg-[#0b1326]/40 backdrop-blur-3xl shadow-[0_1px_0_0_rgba(59,73,76,0.15)] shadow-2xl">
+<div class="flex items-center justify-between px-6 py-3 w-full">
+<div class="text-xl font-black tracking-tighter text-[#c3f5ff]">Neural Architect AI</div>
+<div class="hidden md:flex items-center space-x-8 font-['Inter'] font-medium tracking-tight">
+<a class="text-[#00e5ff] border-b-2 border-[#00e5ff] pb-1" href="#">Home</a>
+<a class="text-[#bac9cc] hover:text-[#c3f5ff] transition-colors duration-300" href="#">Modules</a>
+<a class="text-[#bac9cc] hover:text-[#c3f5ff] transition-colors duration-300" href="#">Ranking</a>
+<a class="text-[#bac9cc] hover:text-[#c3f5ff] transition-colors duration-300" href="#">Community</a>
+</div>
+<div class="flex items-center space-x-4">
+<span class="material-symbols-outlined text-[#c3f5ff] cursor-pointer hover:bg-[#222a3d]/50 p-2 rounded-full transition-colors">notifications</span>
+<img alt="User profile avatar" class="w-8 h-8 rounded-full border border-outline-variant/30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIy62nmYK2YR2sM453HRfopOETTVg1P8FdhKpm_YUOnK88CDeiRn7vZTZFHyU2g3FOmCfwSs1lqweSKYhVlXCOkcFpZFj16FB7vQaD2TB-3EK2_yFH1YPUebNb4SAcyJXm8cdYNnrQysqs_hudb0BT9sZI1k2XnAF5tY0ZgWHJEEKUCtRlk7-bvpTg9YTFVO7kSFhaXyCO7YJmomK1iKoz3o4UyRJGFSqu15fxeGxueb5Mkuj1ynsu3Fjqjir0cehhPJsia-rfe1s"/>
+</div>
+</div>
+</nav>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="relative min-h-[819px] flex flex-col items-center justify-center px-6 overflow-hidden">
+<div class="absolute inset-0 hero-glow -z-10"></div>
+<div class="max-w-4xl text-center">
+<div class="inline-flex items-center px-3 py-1 mb-8 rounded-full bg-surface-container-high border border-outline-variant/20 text-xs font-bold tracking-widest uppercase text-primary-fixed-dim">
+<span class="mr-2 flex h-2 w-2 rounded-full bg-primary-container animate-pulse"></span>
+                    Now Enrolling for Q4 2024
+                </div>
+<h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter text-on-surface mb-6 leading-[1.1]">
+                    Become a <span class="bg-gradient-to-r from-primary to-primary-container bg-clip-text text-transparent">Lead AI Architect</span>
+</h1>
+<p class="text-lg md:text-xl text-on-surface-variant max-w-2xl mx-auto mb-10 leading-relaxed font-['Inter'] font-medium">
+                    Master the full-stack of neural engineering. From fine-tuning LLMs to deploying scalable vector infrastructure. Designed for senior software engineers.
+                </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+<a class="px-8 py-4 bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold rounded shadow-[0_0_20px_rgba(0,229,255,0.3)] active:scale-95 transition-all" href="#pricing">
+                        Reserve Your Spot
+                    </a>
+<a class="px-8 py-4 bg-surface-container-highest border border-outline-variant/30 text-on-surface font-bold rounded hover:bg-surface-bright transition-all" href="#curriculum">
+                        View Curriculum
+                    </a>
+</div>
+</div>
+<!-- Visual Hook: Code Terminal & Architecture Diagram -->
+<div class="mt-20 w-full max-w-6xl grid grid-cols-1 md:grid-cols-12 gap-6 px-4">
+<div class="md:col-span-8 bg-surface-container-lowest p-1 rounded-xl shadow-2xl">
+<div class="bg-surface-container-low rounded-lg p-4 border border-outline-variant/10">
+<div class="flex gap-1.5 mb-4">
+<div class="w-3 h-3 rounded-full bg-error/40"></div>
+<div class="w-3 h-3 rounded-full bg-secondary-container"></div>
+<div class="w-3 h-3 rounded-full bg-primary-container/40"></div>
+</div>
+<pre class="text-sm font-mono text-on-surface-variant leading-relaxed"><span class="text-primary-container">from</span> neural_architect <span class="text-primary-container">import</span> TransformerOptimizer
+
+<span class="text-secondary"># Initialize high-performance training cluster</span>
+architect = TransformerOptimizer(
+    model=<span class="text-tertiary-container">"Llama-3-70B-Architect-v4"</span>,
+    quantization=<span class="text-tertiary-container">"4-bit-nf4"</span>,
+    optimization_strategy=<span class="text-tertiary-container">"LoRA"</span>
+)
+
+architect.fine_tune(dataset=<span class="text-tertiary-container">"eng-proprietary-docs"</span>)
+architect.deploy(target=<span class="text-tertiary-container">"kubernetes-cluster-v1"</span>)
+                        </pre>
+</div>
+</div>
+<div class="md:col-span-4 bg-surface-container-high p-6 rounded-xl border border-outline-variant/10 flex flex-col justify-center">
+<div class="mb-4 text-xs font-bold uppercase tracking-widest text-primary-fixed-dim">Real-world Outcomes</div>
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<div class="h-10 w-10 rounded bg-primary-container/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container">rocket_launch</span>
+</div>
+<div>
+<div class="text-sm font-bold">10x Production Speed</div>
+<div class="text-xs text-on-surface-variant">Optimized inference pipelines</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="h-10 w-10 rounded bg-primary-container/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container">account_balance_wallet</span>
+</div>
+<div>
+<div class="text-sm font-bold">$120k+ Salary Jump</div>
+<div class="text-xs text-on-surface-variant">Average for Lead AI roles</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Social Proof: Company Logos -->
+<section class="py-16 bg-surface-container-low/30 overflow-hidden">
+<p class="text-center text-xs font-bold uppercase tracking-widest text-on-surface-variant/60 mb-8">Engineers from the world's best teams are learning here</p>
+<div class="flex flex-wrap justify-center items-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all">
+<img alt="Google logo" class="h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwHtKgq3BZpyZCcRnATG1oB9Sf4bqu8EhngS8ZD43UNrd38ZMZnp1vPXbF0fcad3EA_eVeiGxl-zcmvT4ofXqSDKsqC0TbIt4eGw5LxcNUuS3UryhYopm6h0J7SXzohRANChMYzh0T11kFY_tmbDu0AVOzuAm087AlDtXmzqtsY6F_GOlv5PiLzcorB7UXlwUShJEKg_JhT6pnsarVhBVwAiXGuiLJfZDUJU3VnOVvtY62EuEA_e8emNSMXsDHZRefrv2Kb59r2u8"/>
+<img alt="Microsoft logo" class="h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCzEkeYBqNJG37lJWygsi4ol3nVwuQfrszP0fc_ZqkAFSZAJx3E-BQCsdUEb-nO0tmTQipUuDUU8ZsgV3tG0sP6JP5GeFL02X6rHvwyeZDrMKXzT-3olrR8XcZVaSNJ50akvfWDxJPb9RCWZvJJJmEXRElT62WyKQki08wDpgMC8Arn0jTCGqCxREcNTlCHvntYU0mevrUGNSmEr3jzr83Tnf2P-bX6uc5jatPINZoo2jSGCjTNHNjurf_M7v_S6r5rPinKL0w5k0"/>
+<img alt="Apple logo" class="h-6 dark:invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhD9fdMhB5ybJN6RQK6UxROwhwkUJQOmPS_w8j5gk97KjJntfdhJTfr1TWqKK8t6w8sl_HhrO7vCoLbeTxyGrG2-k_ZyUs9fwK1ehdoefD9icalcoUMcYg0Hx7y76rF18h-jBPWGjuvU5x6CppN0zXkpRHfiRaJQx7EN3b-nVtOOpjgMwNgvQRjGB2QDoIOz3DeEYnreEWIAjvG3EDVVZfKzrN-XgFChujP_hmKthK9DbLv7gmVzRbmFUceVRvmsTREeLmL1a7Cwo"/>
+<img alt="Meta logo" class="h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDn_DqJH3okQHOTHsUcZkmEHPmFCboFiMX5rciw6HvC472Ru1pqYRmRMayWw9CQXeN7gS0YJ1ajpYolmYw691M5ObUA-wK1EZSK2qVj9nLNh3OpkmQV7d5gVgRMviMKDVnYQGz-Lg4wPQ0DisPBky73_A-aB3fb0BFO-bpMiJ0YluFm6eeng0ZUKOezIvNPSw1eZ5FaTpHMG1qgvlfvVORltn9iOsoM9xK2QZ5ssnGjDV51UD8kXng6ZtHCrfjDiJiPVS9q0My4454"/>
+<img alt="LinkedIn logo" class="h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWcxAsF13b-JYJVxe8Gnb61Qv5MfKi9eCRRBqoCuVY0N71p5v1XJ2Z-xt9ju6-qvcEUEK_qEaWIdn9drQt6rSK5y_5hLgZmG1b0flZX9nnwnNu02wsVu3680yCc4TTataw5rMku4nU4ZNcFjvn3A0TX2feJgiQlssrS4SzbsbnbXEzlth4dXYEN4tz9zqxEK3jJ9MkyKDeKnP0cxXra8nMmVBqQPIUFwcAh8_Iqf42rt_PbrXWAO0d9SkruYcVxvLUW32KL-lEzA8"/>
+</div>
+</section>
+<!-- Course Overview (Curriculum Bento Grid) -->
+<section class="py-32 px-6 max-w-7xl mx-auto" id="curriculum">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+<div class="max-w-2xl">
+<h2 class="text-4xl font-extrabold tracking-tight mb-4">Deep Curriculum for Deep Learning</h2>
+<p class="text-on-surface-variant font-medium">We don't teach you how to use ChatGPT. We teach you how to build the systems that power it.</p>
+</div>
+<div class="flex gap-2">
+<span class="px-4 py-2 bg-surface-container-high rounded-full text-xs font-bold text-primary">12 MODULES</span>
+<span class="px-4 py-2 bg-surface-container-high rounded-full text-xs font-bold text-primary">48 PROJECTS</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Module 1 -->
+<div class="p-8 bg-surface-container-low rounded-2xl border border-outline-variant/10 hover:bg-surface-container-high transition-all">
+<span class="text-4xl mb-6 block material-symbols-outlined text-primary-container">memory</span>
+<h3 class="text-xl font-bold mb-3">Model Architecture</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-6">Master Attention mechanisms, Transformer blocks, and the mathematics of backpropagation from first principles.</p>
+<ul class="space-y-2 text-xs font-bold text-on-surface-variant/80">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-[14px] text-primary-container">check_circle</span> CUSTOM TOKENIZERS</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-[14px] text-primary-container">check_circle</span> KV CACHE OPTIMIZATION</li>
+</ul>
+</div>
+<!-- Module 2 -->
+<div class="p-8 bg-surface-container-low rounded-2xl border border-outline-variant/10 hover:bg-surface-container-high transition-all">
+<span class="text-4xl mb-6 block material-symbols-outlined text-primary-container">database</span>
+<h3 class="text-xl font-bold mb-3">Vector Infrastructure</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-6">Building RAG systems that actually scale. Advanced indexing techniques and hybrid search implementation.</p>
+<ul class="space-y-2 text-xs font-bold text-on-surface-variant/80">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-[14px] text-primary-container">check_circle</span> PINECONE &amp; MILVUS</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-[14px] text-primary-container">check_circle</span> SEMANTIC RE-RANKING</li>
+</ul>
+</div>
+<!-- Module 3 -->
+<div class="p-8 bg-surface-container-low rounded-2xl border border-outline-variant/10 hover:bg-surface-container-high transition-all">
+<span class="text-4xl mb-6 block material-symbols-outlined text-primary-container">cloud_sync</span>
+<h3 class="text-xl font-bold mb-3">LLMOps &amp; Deployment</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-6">The engineering of AI production. Latency management, blue-green deployments for models, and monitoring.</p>
+<ul class="space-y-2 text-xs font-bold text-on-surface-variant/80">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-[14px] text-primary-container">check_circle</span> vLLM &amp; TGI SERVING</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-[14px] text-primary-container">check_circle</span> DRIFT DETECTION</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="py-24 bg-surface-container-lowest">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+<div>
+<h2 class="text-4xl font-extrabold tracking-tight mb-8">Built by Engineers,<br/>For Engineers.</h2>
+<div class="space-y-8">
+<div class="relative pl-8 border-l-2 border-primary-container">
+<p class="text-lg italic text-on-surface mb-4">"This course bridges the gap between 'using AI' and 'engineering AI'. The module on fine-tuning saved our team months of trial and error."</p>
+<div class="flex items-center gap-3">
+<img alt="Student photo" class="w-10 h-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCM4-D04S7gLxiAJVMFmpnePk9a393H4xsPSaGhYg9ODzQDIV7hvYDUK4NeK2_eaXcddLY-ejndB410aGKQhY32GiwVuWVjRC_EgIZ1rQrAxcyzKAsjY_0-MqErMgpNybqnAVCEA5SwJVC6EAhG5jetzNcuh1KH9xB6zl_S-s0MhtX5-l1wGDg6KAn2WLygV_jYVHBZk63yqA-Ti2WYRXvrUhu0q_OM7SQGm8eRdEnnMBYjdjj9gyg4fBPdui-4ux8Da-Je5oPycV0"/>
+<div>
+<div class="text-sm font-bold">Marcus Chen</div>
+<div class="text-xs text-on-surface-variant">Staff Engineer, Stripe</div>
+</div>
+</div>
+</div>
+<div class="relative pl-8 border-l-2 border-primary-container/30">
+<p class="text-lg italic text-on-surface mb-4">"The RAG architecture section alone is worth the price. I've seen plenty of tutorials, but nothing this architecturally sound."</p>
+<div class="flex items-center gap-3">
+<img alt="Student photo" class="w-10 h-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDl69m7GhZYbQt2MT8dh7kVwZMjZVjqJg4nm391E_r6Du9JvcVgF5WT49x1AVazy3w65C-xRBa4Hm1cHHVfmWXBLZXhZmIRBOkuum68aTGufVpWVA3msPhUETHo0k_RGxHcKonMdQPMK10FrlrvfMu5frtt1-X2N9olyPhVvaIy1F1mHiNVL-3MGyEOwteg1a1tDNDWGU7dGc_MDXjmC3tBCgHpMV_-jiEzkll3QySIAEo8R-Z8rNfBTbORw0OmteC9LUN_wNVlxoo"/>
+<div>
+<div class="text-sm font-bold">Sarah Jenkins</div>
+<div class="text-xs text-on-surface-variant">CTO, Stealth AI Startup</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="relative">
+<div class="aspect-square bg-surface-container-low rounded-3xl overflow-hidden border border-outline-variant/20 shadow-2xl">
+<img class="w-full h-full object-cover opacity-60" data-alt="Close-up of a high-tech computer server rack with blue glowing lights and complex wiring in a dark data center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFtfj3kgwhuEz4oXckJhif1wCVyTNmMlUWtupEUmDJQhzNPbw9lXoz1mbH_FDgHDjcn5aZuI28eCJa8CBCRMST-8dKjmlcqXIGOp5gQc6YN7DhbHDBa9GeAPXYFE7EJox4SVI_OpMThPUtE7UuCDHnFGwvcQ17WcaqZtsFml18cPI49QS--aIuHcyUvZr6gB8-wVi5rK3lXvs71wjmmEfqNpu8tkfGgEXrrpuatsj2MsAQb_3eiHApd3e3zfTO8lCBzxnzshm7hEc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent"></div>
+<div class="absolute bottom-8 left-8 right-8 p-6 bg-surface-container-high/80 backdrop-blur-xl rounded-xl border border-primary/20">
+<div class="text-2xl font-black text-primary mb-2">94%</div>
+<div class="text-sm font-medium text-on-surface">Graduates successfully deployed a production AI system within 3 months.</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Pricing Section -->
+<section class="py-32 px-6" id="pricing">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-extrabold tracking-tight mb-4">Choose Your Path</h2>
+<p class="text-on-surface-variant">Investment in your career as an AI leader.</p>
+</div>
+<div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- One-time Payment -->
+<div class="p-10 bg-surface-container-low rounded-3xl border border-outline-variant/10 relative overflow-hidden group">
+<div class="mb-8">
+<h3 class="text-xl font-bold mb-2">Architect Pro</h3>
+<div class="flex items-baseline gap-1">
+<span class="text-4xl font-black text-on-surface">$1,499</span>
+<span class="text-on-surface-variant text-sm">/one-time</span>
+</div>
+</div>
+<ul class="space-y-4 mb-10">
+<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-primary-container text-lg">check</span> Lifetime Access to All Modules</li>
+<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-primary-container text-lg">check</span> Private Github Repository</li>
+<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-primary-container text-lg">check</span> Architect Certification</li>
+<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-primary-container text-lg">check</span> $500 Compute Credits</li>
+</ul>
+<a class="block text-center py-4 bg-surface-container-highest border border-outline-variant/30 text-on-surface font-bold rounded-xl hover:border-primary-container/50 transition-all" href="#checkout">Enroll Now</a>
+</div>
+<!-- Subscription / Mastermind -->
+<div class="p-10 bg-surface-container-high rounded-3xl border-2 border-primary-container relative overflow-hidden">
+<div class="absolute top-4 right-4 bg-primary-container text-on-primary-fixed text-[10px] font-black uppercase tracking-widest px-2 py-1 rounded">Popular</div>
+<div class="mb-8">
+<h3 class="text-xl font-bold mb-2 text-primary-container">Architect Elite</h3>
+<div class="flex items-baseline gap-1">
+<span class="text-4xl font-black text-on-surface">$249</span>
+<span class="text-on-surface-variant text-sm">/month</span>
+</div>
+</div>
+<ul class="space-y-4 mb-10">
+<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-primary-container text-lg">check</span> Everything in Architect Pro</li>
+<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-primary-container text-lg">check</span> Weekly 1-on-1 Mentorship</li>
+<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-primary-container text-lg">check</span> Real-world Project Placement</li>
+<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-primary-container text-lg">check</span> Elite Alumni Network</li>
+</ul>
+<a class="block text-center py-4 bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold rounded-xl shadow-lg active:scale-95 transition-all" href="#checkout">Join the Elite</a>
+</div>
+</div>
+</section>
+<!-- Checkout Form Section -->
+<section class="py-32 bg-surface-container-low/50" id="checkout">
+<div class="max-w-4xl mx-auto px-6">
+<div class="bg-surface p-8 md:p-12 rounded-3xl shadow-2xl border border-outline-variant/10">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div>
+<h2 class="text-3xl font-black mb-6">Complete Enrollment</h2>
+<div class="flex items-center gap-4 p-4 bg-surface-container-lowest rounded-xl mb-8 border border-outline-variant/10">
+<div class="w-12 h-12 bg-primary-container/20 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container">auto_awesome</span>
+</div>
+<div>
+<div class="text-sm font-bold">Architect Elite</div>
+<div class="text-xs text-on-surface-variant">$249.00 billed monthly</div>
+</div>
+</div>
+<div class="space-y-4 text-sm text-on-surface-variant">
+<div class="flex justify-between">
+<span>Subtotal</span>
+<span class="text-on-surface">$249.00</span>
+</div>
+<div class="flex justify-between">
+<span>Taxes</span>
+<span class="text-on-surface">$0.00</span>
+</div>
+<div class="pt-4 border-t border-outline-variant/20 flex justify-between text-lg font-bold text-on-surface">
+<span>Total due now</span>
+<span>$249.00</span>
+</div>
+</div>
+</div>
+<!-- Stripe Style Form -->
+<div class="space-y-6">
+<div>
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2">Email Address</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant/20 rounded-lg px-4 py-3 text-on-surface focus:outline-none focus:border-primary-container transition-all" placeholder="engineer@company.com" type="email"/>
+</div>
+<div>
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2">Card Details</label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border border-outline-variant/20 rounded-t-lg px-4 py-3 text-on-surface focus:outline-none focus:border-primary-container transition-all" placeholder="1234 5678 1234 5678" type="text"/>
+<div class="flex">
+<input class="w-1/2 bg-surface-container-lowest border border-outline-variant/20 rounded-bl-lg px-4 py-3 text-on-surface focus:outline-none focus:border-primary-container transition-all border-t-0" placeholder="MM/YY" type="text"/>
+<input class="w-1/2 bg-surface-container-lowest border border-outline-variant/20 rounded-br-lg px-4 py-3 text-on-surface focus:outline-none focus:border-primary-container transition-all border-t-0 border-l-0" placeholder="CVC" type="text"/>
+</div>
+</div>
+</div>
+<div>
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2">Country or Region</label>
+<select class="w-full bg-surface-container-lowest border border-outline-variant/20 rounded-lg px-4 py-3 text-on-surface focus:outline-none focus:border-primary-container transition-all">
+<option>United States</option>
+<option>United Kingdom</option>
+<option>Germany</option>
+<option>Canada</option>
+</select>
+</div>
+<button class="w-full py-4 bg-primary-container text-on-primary font-bold rounded-xl shadow-lg active:scale-95 transition-all mt-4">
+                                Secure Checkout
+                            </button>
+<p class="text-[10px] text-center text-on-surface-variant uppercase tracking-widest">Powered by Stripe · Encrypted &amp; Secure</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant/10 py-20 px-6">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
+<div class="max-w-sm">
+<div class="text-2xl font-black tracking-tighter text-primary mb-4">Neural Architect AI</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">The premier engineering intelligence platform for the next generation of AI leaders. Built in San Francisco.</p>
+</div>
+<div class="flex flex-col items-center md:items-end gap-6">
+<div class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Join the conversation</div>
+<a class="flex items-center gap-3 px-6 py-3 bg-[#25D366]/10 border border-[#25D366]/30 text-[#25D366] rounded-full font-bold hover:bg-[#25D366]/20 transition-all" href="https://whatsapp.com">
+<span class="material-symbols-outlined">forum</span>
+                    WhatsApp Community
+                </a>
+</div>
+</div>
+<div class="max-w-7xl mx-auto mt-20 pt-8 border-t border-outline-variant/5 flex flex-col md:flex-row justify-between text-[10px] uppercase tracking-[0.2em] text-on-surface-variant/40">
+<div>© 2024 Neural Architect AI. ALL RIGHTS RESERVED.</div>
+<div class="flex gap-8 mt-4 md:mt-0">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Syllabus</a>
+</div>
+</div>
+</footer>
+</body></html>
