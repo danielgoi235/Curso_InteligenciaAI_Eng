@@ -285,7 +285,7 @@
                 </div>
             </div>
 
-            <form id="checkout-form" class="space-y-6 mb-8" onsubmit="proceedToCheckout(event)">
+            <form id="checkout-form" class="space-y-6 mb-8">
                 <div>
                     <label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2">Email</label>
                     <input id="email" name="email" class="w-full bg-surface-container-lowest border border-outline-variant/20 rounded-lg px-4 py-3 text-on-surface focus:outline-none focus:border-primary-container transition-all" placeholder="seu.email@exemplo.com" type="email" required/>
@@ -313,9 +313,9 @@
                     </p>
                 </div>
 
-                <button type="submit" class="w-full py-4 bg-gradient-to-r from-primary-container to-primary-fixed-dim text-on-primary font-bold rounded-xl shadow-lg hover:shadow-xl transition-all cursor-pointer hover:scale-105">
+                <a onclick="return false;" href="https://pay.hotmart.com/S105222201M?checkoutMode=2" class="hotmart-fb hotmart__button-checkout w-full block text-center py-4 bg-gradient-to-r from-primary-container to-primary-fixed-dim text-on-primary font-bold rounded-xl shadow-lg hover:shadow-xl transition-all">
                     💳 Pagar com Hotmart - R$ 790
-                </button>
+                </a>
             </form>
 
             <p class="text-[10px] text-center text-on-surface-variant uppercase tracking-widest">
@@ -325,34 +325,19 @@
     </div>
 </section>
 
-<script>
-const HOTMART_PRODUCT_ID = '7505018'; // Seu produto Hotmart
-
-function proceedToCheckout(event) {
-    event.preventDefault();
-
-    const email = document.getElementById('email').value;
-    const name = document.getElementById('name').value;
-    const specialty = document.getElementById('specialty').value;
-
-    if (!email || !name || !specialty) {
-        alert('Por favor, preencha todos os campos');
-        return;
+<script type="text/javascript">
+    // Hotmart Widget Loader
+    function importHotmart(){
+         var imported = document.createElement('script');
+         imported.src = 'https://static.hotmart.com/checkout/widget.min.js';
+         document.head.appendChild(imported);
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://static.hotmart.com/css/hotmart-fb.min.css';
+        document.head.appendChild(link);
     }
-
-    // Log de debug
-    console.log('Iniciando checkout:', { email, name, specialty });
-
-    // Redireciona para Hotmart com ID do produto
-    // Format: https://pay.hotmart.com/{PRODUCT_ID}?email={email}&name={name}
-    const hotmartUrl = `https://pay.hotmart.com/${HOTMART_PRODUCT_ID}?email=${encodeURIComponent(email)}&name=${encodeURIComponent(name)}`;
-
-    // Armazena dados no localStorage enquanto não houver autenticação
-    localStorage.setItem('pendingCheckout', JSON.stringify({ email, name, specialty }));
-
-    // Redireciona
-    window.location.href = hotmartUrl;
-}
+    importHotmart();
 </script>
 
 <!-- FOOTER -->
